@@ -1,12 +1,13 @@
 import Header from "./Header";
 import CardPizza from "./CardPizza";
+import { pizzas } from "../data/pizzas";
 
 export default function Home() {
   return (
     <div>
       <Header />
 
-      <div className="contenedor-pizzas">
+      {/*<div className="contenedor-pizzas">
         <CardPizza
           name="Pizza Napolitina"
           price="5.950"
@@ -28,10 +29,21 @@ export default function Home() {
           img="https://images.unsplash.com/photo-1628840042765-356cda07504e?w=600&auto=format&fit=crop&q=60"
         />
 
+      </div>*/}
+
+      <div className="contenedor-pizzas">
+        {pizzas.map((pizza) => (
+          <CardPizza
+            key={pizza.id}
+            id={pizza.id}
+            name={pizza.name}
+            price={pizza.price}
+            ingredients={pizza.ingredients}
+            img={pizza.img}
+            desc={pizza.desc}
+          />
+        ))}
       </div>
-
-
-
     </div>
   );
 }

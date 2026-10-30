@@ -3,6 +3,7 @@
     margin: 0;
     box-sizing: border-box;
     
+    
 }
 
 
@@ -58,6 +59,10 @@
     padding: 30px;
 
 }
+
+.ingredientes ul {
+    list-style: none;
+    }
 
 /*Componente NavBar*/
 
@@ -232,3 +237,100 @@
     color:  #A93226;
 }
 
+
+/*CARRITO*/
+
+
+.carrito {
+    width: 330px;
+    margin: 20px;
+    padding: 10px 12px;
+}
+
+.carrito h2 {
+    font-size: 22px;
+    margin-bottom: 20px;
+}
+
+.carrito-producto{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 14px;
+}
+
+.carrito-producto img{
+    width: 60px;
+    height: 60px;
+    object-fit: cover;
+    border-radius: 4px;
+}
+
+.carrito-producto h3{
+    width:100%;
+    font-size: 20px;
+    font-weight: 600;
+    margin: 0;
+    text-transform: capitalize;
+}
+
+.carrito-producto p{
+    width: 300px;
+    margin: 0;
+    font-size: 15px;
+    font-weight: 600;
+}
+
+.carrito-cantidad{
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.carrito-cantidad span {
+    font-size: 16px;
+    font-weight: 500;
+    min-width: 10px;
+    text-align: center;
+}
+
+.carrito-cantidad button{
+    width: 28px;
+    height: 28px;
+    border-radius: 4px;
+    background-color: white;
+    cursor: pointer;
+    font-size: 18px;
+    line-height: 1;
+}
+
+.btn-menos {
+    border: 1px solid #dc3545;
+    color: #dc3545;
+}
+
+.btn-mas {
+    border: 1px solid green;
+    color: green;
+}
+
+.carrito-total {
+    margin-top: 28px;
+    margin-bottom: 16px;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.btn-pagar {
+    background-color: #212529;
+    color: white;
+    border: none;
+    padding: 10px 16px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.btn-pagar:hover {
+    background-color: #111417;
+}

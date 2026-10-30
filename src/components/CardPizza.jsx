@@ -1,17 +1,54 @@
-
-export default function CardPizza({name, price, ingredientes, img}) {
+export default function CardPizza({
+  id,
+  name,
+  price,
+  ingredients,
+  img,
+  desc,
+}) {
   return (
     <div className="card-Pizza">
-        <img src={img} alt="imagen" />
+      {/* Imagen */}
+      <img src={img} alt="imagen" />
 
-        <h3>{name}</h3>
+      {/* Name */}
+      <h3>{name}</h3>
 
-        <p>Ingredientes: {ingredientes.join(", ")}</p>
+      {/* ID */}
+      <p>ID: {id}</p>
 
-        <p>Precio: ${price}</p>
+       {/* Descripción */}
+       {/* Si existe una descripción, se muestra. Si no, no se muestra nada. */}
+        {desc && (
+          <p className="card-descripcion">
+            {desc}
+          </p>
+        )}
 
-        <button>Ver más</button>
-        <button>Añadir</button>
+
+      {/* Ingredientes */}
+      <div className="ingredientes">
+
+        <p>Ingredientes:</p>
+
+        <ul>
+          {ingredients.map( (ing, i)=>(
+            <li key={i}>
+              {i===0 ? "🍕 " :""}
+              {ing}
+              {i<ingredients.length-1 ? ", " : ""}
+            </li>
+          ))}
+        </ul>
+
+
+      </div>
+
+      {/* Precio */}
+      <p>Precio: ${price}</p>
+
+      <button>Ver más</button>
+      <button>Añadir</button>
     </div>
-  )
+  );
 }
