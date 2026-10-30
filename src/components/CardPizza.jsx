@@ -9,7 +9,7 @@ export default function CardPizza({
   return (
     <div className="card-Pizza">
       {/* Imagen */}
-      <img src={img} alt="imagen" />
+      <img src={img} alt={name} />
 
       {/* Name */}
       <h3>{name}</h3>

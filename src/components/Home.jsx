@@ -1,8 +1,17 @@
 import Header from "./Header";
 import CardPizza from "./CardPizza";
-import { pizzas } from "../data/pizzas";
+//import { pizzas } from "../data/pizzas";
+import { useState, useEffect } from "react";
 
 export default function Home() {
+  const [pizzas, setPizzas] = useState([]);
+
+  useEffect(() => {
+    fetch("http://localhost:5000/api/pizzas")
+      .then((respuesta) => respuesta.json())
+      .then((datos) => setPizzas(datos));
+  }, []);
+
   return (
     <div>
       <Header />
