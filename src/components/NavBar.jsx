@@ -1,14 +1,17 @@
+import { Link } from "react-router-dom";
+
+
 export default function NavBar() {
 
     const total = 2500
-    const token = true
+    const token = false
 
     return (
         <nav className="navbar">
             <h2 className="navbar-logo">Pizzería Mamma Mía!</h2>
 
             <div className="navbar-links">
-                <button>Home</button>
+                <Link to="/">Home</Link>
 
                  {
                 token ? (
@@ -18,8 +21,8 @@ export default function NavBar() {
                     </>
                 ) : (
                     <>
-                        <button >🔐 Login</button>
-                        <button >🔐 Register</button>
+                        <Link to="/login" >🔐 Login</Link>
+                        <Link to="/register" >🔐 Register</Link>
                     </>
                 )
 
