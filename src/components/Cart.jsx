@@ -1,12 +1,18 @@
 
 import { useContext } from "react";
+
 import { CartContext } from "../context/CartContext";
+import { UserContext } from "../context/UserContext";
 
 export default function Cart() {
 
-    // Obtenemos el carrito y el total compartidos
+    // Obtenemos los datos del carrito
     const { cart, setCart, total } = useContext(CartContext);
 
+    // Obtenemos el token del usuario
+    const { token } = useContext(UserContext);
+
+    // Aumentar cantidad
     function aumentarCantidad(id) {
         setCart(
             cart.map((item) =>
@@ -17,6 +23,7 @@ export default function Cart() {
         );
     }
 
+    // Disminuir cantidad
     function disminuirCantidad(id) {
         setCart(
             cart
@@ -76,7 +83,10 @@ export default function Cart() {
                 Total: ${total.toLocaleString("es-AR")}
             </h3>
 
-            <button className="btn-pagar">
+            <button
+                className="btn-pagar"
+                disabled={!token}
+            >
                 Pagar
             </button>
 

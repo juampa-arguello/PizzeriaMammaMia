@@ -1,15 +1,19 @@
 
-
 import { Link } from "react-router-dom";
 import { useContext } from "react";
+
 import { CartContext } from "../context/CartContext";
+import { UserContext } from "../context/UserContext";
 
 export default function NavBar() {
 
-    const token = false;
-
-    // Obtenemos el total del Context
+    // Obtenemos el total del carrito
     const { total } = useContext(CartContext);
+
+    // Obtenemos el token y la función logout
+    const { token, logout } = useContext(UserContext);
+
+    console.log("TOKEN ACTUAL:", token);
 
     return (
         <nav className="navbar">
@@ -24,13 +28,23 @@ export default function NavBar() {
 
                 {token ? (
                     <>
-                        <button>🔓 Profile</button>
-                        <button>🔒 Logout</button>
+                        <Link to="/profile">
+                            🔓 Profile
+                        </Link>
+
+                        <button onClick={logout}>
+                            🔒 Logout
+                        </button>
                     </>
                 ) : (
                     <>
-                        <Link to="/login">🔐 Login</Link>
-                        <Link to="/register">🔐 Register</Link>
+                        <Link to="/login">
+                            🔐 Login
+                        </Link>
+
+                        <Link to="/register">
+                            🔐 Register
+                        </Link>
                     </>
                 )}
 
