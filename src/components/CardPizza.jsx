@@ -1,54 +1,77 @@
+
+import { useContext } from "react";
+import { CartContext } from "../context/CartContext";
+
 export default function CardPizza({
-  id,
-  name,
-  price,
-  ingredients,
-  img,
-  desc,
+    id,
+    name,
+    price,
+    ingredients,
+    img,
+    desc
 }) {
-  return (
-    <div className="card-Pizza">
-      {/* Imagen */}
-      <img src={img} alt={name} />
 
-      {/* Name */}
-      <h3>{name}</h3>
+    // Obtenemos la función del carrito compartido
+    const { agregarPizza } = useContext(CartContext);
 
-      {/* ID */}
-      <p>ID: {id}</p>
+    return (
+        <div className="card-Pizza">
 
-       {/* Descripción */}
-       {/* Si existe una descripción, se muestra. Si no, no se muestra nada. */}
-        {desc && (
-          <p className="card-descripcion">
-            {desc}
-          </p>
-        )}
+            <img src={img} alt={name} />
 
+            <div className="card-contenido">
 
-      {/* Ingredientes */}
-      <div className="ingredientes">
+                <div className="card-encabezado">
+                    <h3>{name}</h3>
+                    <p>ID: {id}</p>
+                </div>
 
-        <p>Ingredientes:</p>
+                <p className="card-descripcion">
+                    {desc}
+                </p>
 
-        <ul>
-          {ingredients.map( (ing, i)=>(
-            <li key={i}>
-              {i===0 ? "🍕 " :""}
-              {ing}
-              {i<ingredients.length-1 ? ", " : ""}
-            </li>
-          ))}
-        </ul>
+                <h4>Ingredientes:</h4>
 
+                <ul className="card-ingredientes">
+                    {ingredients.map((ingrediente, i) => (
+                        <li key={i}>
+                            🍕 {ingrediente}
+                        </li>
+                    ))}
+                </ul>
 
-      </div>
+                <div className="card-inferior">
 
-      {/* Precio */}
-      <p>Precio: ${price}</p>
+                    <h3>
+                        Precio: ${price.toLocaleString("es-AR")}
+                    </h3>
 
-      <button>Ver más</button>
-      <button>Añadir</button>
-    </div>
-  );
+                    <div className="card-botones">
+
+                        <button className="btn-ver-mas">
+                            Ver más 👁️
+                        </button>
+
+                        <button
+                            className="btn-anadir"
+                            onClick={() => agregarPizza({
+                                id,
+                                name,
+                                price,
+                                ingredients,
+                                img,
+                                desc
+                            })}
+                        >
+                            Añadir 🛒
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+    );
 }
